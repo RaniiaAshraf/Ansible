@@ -1,0 +1,7 @@
+[all]
+public ansible_host=52.91.98.38 ansible_port=22 ansible_user=ubuntu ansible_ssh_private_key_file=./ansible.pem 
+sonarqube ansible_host=10.0.1.5 ansible_port=22 ansible_user=ubuntu ansible_ssh_private_key_file=./ansible.pem ansible_ssh_common_args='-o ProxyCommand="ssh public -W %h:%p"'
+nexus ansible_host=10.0.3.9 ansible_port=22 ansible_user=ec2-user ansible_ssh_private_key_file=./ansible.pem ansible_ssh_common_args='-o ProxyCommand="ssh public -W %h:%p"'
+
+
+  

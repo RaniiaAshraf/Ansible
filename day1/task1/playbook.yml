@@ -1,0 +1,25 @@
+- name: install apache2  
+  hosts: web 
+  become: true 
+  tasks: 
+   - name: install apache
+     apt: 
+        name: apache2 
+        state: present 
+      
+   - name: apache2 listen on port 8090
+     lineinfile: 
+        dest: /etc/apache2/ports.conf 
+        regexp: "^Listen 80" 
+        line: "Listen 8090" 
+        state: present
+  
+   - name: copy file to /var/www/html/index.html
+     copy: 
+       src: index.html
+       dest: /var/www/html/index.html
+
+   - name: restart apache2
+     service: 
+      name: apache2 
+      state: restarted

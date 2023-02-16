@@ -1,0 +1,34 @@
+- name: Deploy django app
+  hosts: web 
+  become: true 
+  tasks: 
+   - name: copy app 
+     copy: 
+       src: app
+       dest: /home/ubuntu
+
+   - name: apt update 
+     apt: 
+        update_cache: yes
+
+   - name: install pip
+     apt: 
+        name: python3-pip 
+        state: present
+
+   - name: install required packages
+     pip: 
+       requirements: /home/ubuntu/app/requirements.txt
+
+   - name: make migrations for DB
+     command: python3 /home/ubuntu/app/manage.py makemigrations
+
+   - name: apply the migrations
+     command: python3 /home/ubuntu/app/manage.py migrate
+
+   - name: start the server
+     command: python3 /home/ubuntu/app/manage.py runserver 0.0.0.0:8000
+       
+
+
+
