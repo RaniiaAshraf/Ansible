@@ -7,4 +7,4 @@
 
 ## Day2 
 - sonarqube
-- neux 
+- nexus
