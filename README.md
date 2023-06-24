@@ -6,5 +6,4 @@
 - custom page
 
 ## Day2 
-- sonarqube
 - nexus
